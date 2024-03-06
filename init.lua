@@ -295,6 +295,12 @@ require('lazy').setup {
     end,
   },
 
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^4',
+    ft = { 'rust' },
+  },
+
   { -- Autoformat
     'stevearc/conform.nvim',
     opts = {

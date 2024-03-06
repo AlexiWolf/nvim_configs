@@ -332,6 +332,7 @@ require('lazy').setup {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
 
+      -- Pre-configured snippets
       'rafamadriz/friendly-snippets',
     },
     config = function()

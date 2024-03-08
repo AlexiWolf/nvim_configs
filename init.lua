@@ -72,6 +72,10 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- Lazygit keybinds
+vim.keymap.set('n', '<leader>gg', ':LazyGit<cr>', { desc = 'Open Lazy[G]it' })
+vim.keymap.set('n', '<leader>gf', ':LazyGitCurrentFile<cr>', { desc = 'Open Lazy[G]it for Current [F]ile' })
+
 -- [[ Basic Autocommands ]]
 
 -- Highlight when yanking (copying) text
@@ -130,6 +134,7 @@ require('lazy').setup {
         ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
         ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
         ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+        ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
       }
     end,
   },
@@ -455,5 +460,21 @@ require('lazy').setup {
         indent = { enable = true },
       }
     end,
+  },
+
+  -- Lazygit integration
+  {
+    'kdheepak/lazygit.nvim',
+    cmd = {
+      'LazyGit',
+      'LazyGitConfig',
+      'LazyGitCurrentFile',
+      'LazyGitFilter',
+      'LazyGitFilterCurrentFile',
+    },
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/lazygit.nvim',
+    },
   },
 }

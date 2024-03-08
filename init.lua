@@ -74,7 +74,6 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 -- Lazygit keybinds
 vim.keymap.set('n', '<leader>gg', ':LazyGit<cr>', { desc = 'Open Lazy[G]it' })
-vim.keymap.set('n', '<leader>gf', ':LazyGitCurrentFile<cr>', { desc = 'Open LazyGit [F]ile' })
 
 -- [[ Basic Autocommands ]]
 

@@ -187,6 +187,10 @@ require('lazy').setup {
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
+      -- Git keymap
+      vim.keymap.set('n', '<leader>gc', builtin.buffers, { desc = '[C]ommit Log' })
+      vim.keymap.set('n', '<leader>gf', builtin.buffers, { desc = 'Commit Log of Current [F]ile' })
+
       -- Theme / behavior
       vim.keymap.set('n', '<leader>/', function()
         builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {

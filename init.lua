@@ -42,6 +42,7 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 vim.opt.colorcolumn = { 79, 99, 119 }
+vim.cmd 'set nowrap'
 
 -- [[ Basic Keymaps ]]
 

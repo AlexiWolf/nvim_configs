@@ -74,6 +74,8 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 -- Lazygit keybinds
 vim.keymap.set('n', '<leader>gg', ':LazyGit<cr>', { desc = 'Open Lazy[G]it' })
+vim.keymap.set('n', '<leader>gc', ':LazyGitFilter<cr>', { desc = '[C]ommit Log' })
+vim.keymap.set('n', '<leader>gf', ':LazyGitFilterCurrentFile<cr>', { desc = 'Commit Log of Current [F]ile' })
 
 -- [[ Basic Autocommands ]]
 
@@ -186,10 +188,6 @@ require('lazy').setup {
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
-
-      -- Git keymap
-      vim.keymap.set('n', '<leader>gc', builtin.buffers, { desc = '[C]ommit Log' })
-      vim.keymap.set('n', '<leader>gf', builtin.buffers, { desc = 'Commit Log of Current [F]ile' })
 
       -- Theme / behavior
       vim.keymap.set('n', '<leader>/', function()

@@ -99,13 +99,15 @@ vim.opt.rtp:prepend(lazypath)
 
 -- [[ Rustaceanvim Config ]]
 vim.g.rustaceanvim = {
-  default_settings = {
-    ['rust-analyzer'] = {
-      cargo = {
-        features = 'all',
-        buildScripts = { enable = true },
+  server = {
+    settings = {
+      ['rust-analyzer'] = {
+        cargo = {
+          features = 'all',
+          buildScripts = { enable = true },
+        },
+        procMacro = { enable = true },
       },
-      procMacro = { enable = true },
     },
   },
 }

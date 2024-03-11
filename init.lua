@@ -97,8 +97,20 @@ if not vim.loop.fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
--- [[ Configure and install plugins ]]
+-- [[ Rustaceanvim Config ]]
+vim.g.rustaceanvim = {
+  default_settings = {
+    ['rust-analyzer'] = {
+      cargo = {
+        features = 'all',
+        buildScripts = { enable = true },
+      },
+      procMacro = { enable = true },
+    },
+  },
+}
 
+-- [[ Configure and install plugins ]]
 require('lazy').setup {
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
@@ -269,17 +281,6 @@ require('lazy').setup {
       -- Enable the following language servers
       local servers = {
         pyright = {},
-        rust_analyzer = {
-          settings = {
-            ['rust-analyzer'] = {
-              cargo = {
-                features = 'all',
-                buildScripts = { enable = true },
-              },
-              procMacro = { enable = true },
-            },
-          },
-        },
         lua_ls = {
           settings = {
             Lua = {
@@ -322,6 +323,11 @@ require('lazy').setup {
         },
       }
     end,
+  },
+  {
+    'mrcjkb/rustaceanvim',
+    version = '4.11',
+    ft = { 'rust' },
   },
   { -- Autoformat
     'stevearc/conform.nvim',

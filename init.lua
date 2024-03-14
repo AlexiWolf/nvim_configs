@@ -234,6 +234,9 @@ require('lazy').setup {
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
+      -- Inlay hints for Nvim 9.
+      'simrat39/inlay-hints.nvim',
+
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       { 'j-hui/fidget.nvim', opts = {} },
@@ -245,6 +248,11 @@ require('lazy').setup {
           local map = function(keys, func, desc)
             vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
+
+          require('inlay-hints').setup {
+            renderer = 'inlay-hints/render/eol',
+          }
+          require('inlay-hints').on_attach(event.data.client_id, event.buf)
 
           map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
           map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')

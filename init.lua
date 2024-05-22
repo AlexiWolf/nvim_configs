@@ -260,6 +260,16 @@ require('lazy').setup {
           map('K', vim.lsp.buf.hover, 'Hover Documentation')
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
+          map('<leader>th', function()
+            local is_enabled = not vim.lsp.inlay_hint.is_enabled()
+            vim.lsp.inlay_hint.enable(is_enabled)
+            if is_enabled then
+              print 'Inlay hints have been enabled'
+            else
+              print 'Inlay hints have been disabled'
+            end
+          end, '[T]oggle Inlay [H]ints')
+
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
           --    See `:help CursorHold` for information about when this is executed

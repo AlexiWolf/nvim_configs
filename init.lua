@@ -81,10 +81,8 @@ vim.keymap.set('n', '<leader>gf', ':LazyGitFilterCurrentFile<cr>', { desc = 'Com
 -- Hop keybinds
 vim.keymap.set('n', 'gw', ':HopWordMW<cr>', { desc = '[G]o to [W]ord' })
 vim.keymap.set('n', 'gp', ':HopPatternMW<cr>', { desc = '[G]o to [P]attern' })
-vim.keymap.set('n', 'g2c', ':HopPatternMW<cr>', { desc = '[G]o to [2]-[C] Pattern' })
 vim.keymap.set('n', 'glw', ':HopWordMW<cr>', { desc = '[G]o to Current-[L]ine [W]ord' })
 vim.keymap.set('n', 'glp', ':HopPatternMW<cr>', { desc = '[G]o to Current-[L]ine [P]attern' })
-vim.keymap.set('n', 'gl2c', ':HopPatternMW<cr>', { desc = '[G]o to Current-[L]ine [2]-[C] Pattern' })
 
 -- [[ Basic Autocommands ]]
 

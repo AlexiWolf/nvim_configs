@@ -501,4 +501,11 @@ require('lazy').setup {
       'nvim-lua/plenary.nvim',
     },
   },
+
+  {
+    'phaazon/hop.nvim',
+    config = function()
+      require('hop').setup {}
+    end,
+  },
 }

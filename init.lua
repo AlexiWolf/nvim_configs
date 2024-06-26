@@ -499,7 +499,6 @@ require('lazy').setup {
     },
     dependencies = {
       'nvim-lua/plenary.nvim',
-      'nvim-telescope/lazygit.nvim',
     },
   },
 }

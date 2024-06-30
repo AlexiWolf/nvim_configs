@@ -348,7 +348,7 @@ require('lazy').setup {
   },
   {
     'mrcjkb/rustaceanvim',
-    version = '4.11',
+    version = '4',
     ft = { 'rust' },
   },
   { -- Autoformat

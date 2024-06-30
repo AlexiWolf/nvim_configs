@@ -26,7 +26,6 @@ vim.g.maplocalleader = ' '
 vim.opt.relativenumber = true
 vim.opt.mouse = 'a'
 vim.opt.showmode = false -- Don't show the mode, since it's already in status line
-vim.opt.clipboard = 'unnamedplus' -- Sync clipboard between OS and Neovim.
 vim.opt.breakindent = true
 vim.opt.undofile = true
 vim.opt.ignorecase = true

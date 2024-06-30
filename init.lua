@@ -324,7 +324,6 @@ require('lazy').setup {
       require('mason').setup()
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
-        'rust-analyzer',
         'stylua',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -347,8 +346,8 @@ require('lazy').setup {
   },
   {
     'mrcjkb/rustaceanvim',
-    version = '4',
-    ft = { 'rust' },
+    version = '^4', -- Recommended
+    lazy = false, -- This plugin is already lazy
   },
   { -- Autoformat
     'stevearc/conform.nvim',

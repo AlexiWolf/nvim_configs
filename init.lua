@@ -43,6 +43,8 @@ vim.opt.scrolloff = 10
 vim.opt.colorcolumn = { 79, 99, 119 }
 vim.cmd 'set nowrap'
 
+vim.g.gutentags_file_list_command = 'fd'
+
 -- [[ Basic Keymaps ]]
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
@@ -173,6 +175,8 @@ require('lazy').setup {
       vim.keymap.set('n', '<leader>ss', fzf.lsp_live_workspace_symbols, { desc = '[S]earch Workspace [S]ymbols' })
     end,
   },
+
+  { 'ludovicchabant/vim-gutentags' },
 
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',

@@ -168,9 +168,11 @@ require('lazy').setup {
     -- optional for icon support
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
-      -- calling `setup` is optional for customization
+      -- Setup
       local fzf = require 'fzf-lua'
       fzf.setup()
+
+      -- Keybindings
       vim.keymap.set('n', '<leader>sf', fzf.files, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>ss', fzf.lsp_live_workspace_symbols, { desc = '[S]earch Workspace [S]ymbols' })
       vim.keymap.set('n', '<leader>bs', fzf.lsp_live_workspace_symbols, { desc = '[B]uffer [S]ymbols' })

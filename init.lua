@@ -276,8 +276,8 @@ require('lazy').setup {
           map('gI', fzf.lsp_implementations, '[G]o to [I]mplementation')
           map('gD', vim.lsp.buf.declaration, '[G]o to [D]eclaration')
 
-          map('<leader>ws', fzf.lsp_live_workspace_symbols, '[W]orkspace [S]ymbols Search')
-          map('<leader>bs', fzf.lsp_live_document_symbols, '[B]uffer [S]ymbols Search')
+          map('<leader>ws', fzf.lsp_workspace_symbols, '[W]orkspace [S]ymbols Search')
+          map('<leader>bs', fzf.lsp_document_symbols, '[B]uffer [S]ymbols Search')
           map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
           map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
           map('K', vim.lsp.buf.hover, 'Hover Documentation')

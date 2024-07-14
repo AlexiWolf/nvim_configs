@@ -173,7 +173,8 @@ require('lazy').setup {
       fzf.setup()
 
       -- Keybindings
-      vim.keymap.set('n', '<leader>f', fzf.files, { desc = '[S]earch [F]iles' })
+      vim.keymap.set('n', '<leader>f', fzf.files, { desc = '[F]ile Search' })
+      vim.keymap.set('n', '<leader>t', fzf.tags, { desc = '[T]ag Search' })
     end,
   },
 

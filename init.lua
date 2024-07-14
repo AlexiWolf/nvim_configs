@@ -173,9 +173,7 @@ require('lazy').setup {
       fzf.setup()
 
       -- Keybindings
-      vim.keymap.set('n', '<leader>sf', fzf.files, { desc = '[S]earch [F]iles' })
-      vim.keymap.set('n', '<leader>ss', fzf.lsp_live_workspace_symbols, { desc = '[S]earch Workspace [S]ymbols' })
-      vim.keymap.set('n', '<leader>bs', fzf.lsp_live_workspace_symbols, { desc = '[B]uffer [S]ymbols' })
+      vim.keymap.set('n', '<leader>f', fzf.files, { desc = '[S]earch [F]iles' })
     end,
   },
 
@@ -266,22 +264,23 @@ require('lazy').setup {
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
         callback = function(event)
+          local fzf = require 'fzf-lua'
           local map = function(keys, func, desc)
             vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
 
           vim.lsp.inlay_hint.enable(true, { bufnr = event.buf })
 
-          map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-          map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-          map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-          map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
-          map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-          map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+          map('gd', fzf.lsp_definitions, '[G]o to [D]efinition')
+          map('gr', fzf.lsp_references, '[G]o to [R]eferences')
+          map('gI', fzf.lsp_implementations, '[G]o to [I]mplementation')
+          map('gD', vim.lsp.buf.declaration, '[G]o to [D]eclaration')
+
+          map('<leader>ws', fzf.lsp_live_workspace_symbols, '[W]orkspace [S]ymbols Search')
+          map('<leader>bs', fzf.lsp_live_document_symbols, '[B]uffer [S]ymbols Search')
           map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
           map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
           map('K', vim.lsp.buf.hover, 'Hover Documentation')
-          map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
           map('<leader>th', function()
             local is_enabled = not vim.lsp.inlay_hint.is_enabled()

@@ -342,6 +342,8 @@ require('lazy').setup {
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
+        automatic_installation = {},
+        ensure_installed = {},
         handlers = {
           function(server_name)
             if server_name ~= 'rust_analyzer' then
@@ -359,7 +361,7 @@ require('lazy').setup {
   },
   {
     'mrcjkb/rustaceanvim',
-    version = '^4', -- Recommended
+    version = '^5', -- Recommended
     lazy = false, -- This plugin is already lazy
   },
   { -- Autoformat

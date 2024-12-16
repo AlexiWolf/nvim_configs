@@ -24,6 +24,7 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.opt.relativenumber = true
+vim.opt.number = true
 vim.opt.mouse = 'a'
 vim.opt.showmode = false -- Don't show the mode, since it's already in status line
 vim.opt.breakindent = true

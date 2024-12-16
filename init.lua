@@ -69,17 +69,6 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
--- Lazygit keybinds
-vim.keymap.set('n', '<leader>gg', ':LazyGit<cr>', { desc = 'Open Lazy[G]it' })
-vim.keymap.set('n', '<leader>gc', ':LazyGitFilter<cr>', { desc = '[C]ommit Log' })
-vim.keymap.set('n', '<leader>gf', ':LazyGitFilterCurrentFile<cr>', { desc = 'Commit Log of Current [F]ile' })
-
--- Hop keybinds
-vim.keymap.set('n', 'gw', ':HopWordMW<cr>', { desc = '[G]o to [W]ord' })
-vim.keymap.set('n', 'gp', ':HopPatternMW<cr>', { desc = '[G]o to [P]attern' })
-vim.keymap.set('n', 'glw', ':HopWordCurrentLine<cr>', { desc = '[G]o to Current-[L]ine [W]ord' })
-vim.keymap.set('n', 'glp', ':HopPatternCurrentLine<cr>', { desc = '[G]o to Current-[L]ine [P]attern' })
-
 -- [[ Basic Autocommands ]]
 
 -- Highlight when yanking (copying) text
@@ -98,21 +87,6 @@ if not vim.loop.fs_stat(lazypath) then
   vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
-
--- [[ Rustaceanvim Config ]]
-vim.g.rustaceanvim = {
-  server = {
-    settings = {
-      ['rust-analyzer'] = {
-        cargo = {
-          features = 'all',
-          buildScripts = { enable = true },
-        },
-        procMacro = { enable = true },
-      },
-    },
-  },
-}
 
 -- [[ Configure and install plugins ]]
 require('lazy').setup {
@@ -293,7 +267,22 @@ require('lazy').setup {
   {
     'mrcjkb/rustaceanvim',
     version = '^5', -- Recommended
-    lazy = false, -- This plugin is already lazy
+    event = 'VimEnter',
+    config = function()
+      vim.g.rustaceanvim = {
+        server = {
+          settings = {
+            ['rust-analyzer'] = {
+              cargo = {
+                features = 'all',
+                buildScripts = { enable = true },
+              },
+              procMacro = { enable = true },
+            },
+          },
+        },
+      }
+    end,
   },
   { -- Autoformat
     'stevearc/conform.nvim',
@@ -444,6 +433,7 @@ require('lazy').setup {
   -- Lazygit integration
   {
     'kdheepak/lazygit.nvim',
+    event = 'VimEnter',
     cmd = {
       'LazyGit',
       'LazyGitConfig',
@@ -454,12 +444,22 @@ require('lazy').setup {
     dependencies = {
       'nvim-lua/plenary.nvim',
     },
+    config = function()
+      vim.keymap.set('n', '<leader>gg', ':LazyGit<cr>', { desc = 'Open Lazy[G]it' })
+      vim.keymap.set('n', '<leader>gc', ':LazyGitFilter<cr>', { desc = '[C]ommit Log' })
+      vim.keymap.set('n', '<leader>gf', ':LazyGitFilterCurrentFile<cr>', { desc = 'Commit Log of Current [F]ile' })
+    end,
   },
 
   {
     'phaazon/hop.nvim',
+    event = 'VimEnter',
     config = function()
       require('hop').setup {}
+      vim.keymap.set('n', 'gw', ':HopWordMW<cr>', { desc = '[G]o to [W]ord' })
+      vim.keymap.set('n', 'gp', ':HopPatternMW<cr>', { desc = '[G]o to [P]attern' })
+      vim.keymap.set('n', 'glw', ':HopWordCurrentLine<cr>', { desc = '[G]o to Current-[L]ine [W]ord' })
+      vim.keymap.set('n', 'glp', ':HopPatternCurrentLine<cr>', { desc = '[G]o to Current-[L]ine [P]attern' })
     end,
   },
 }
